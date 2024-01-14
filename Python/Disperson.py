@@ -14,3 +14,5 @@ X3=statistics.variance(data3)
 Y2=statistics.stdev(data2)
 Y3=statistics.stdev(data3)
 print(round(X2,2),round(Y2,2),round(X3,2),round(Y3,2))
+
+# Git Test
