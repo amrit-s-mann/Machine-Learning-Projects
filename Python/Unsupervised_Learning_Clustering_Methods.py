@@ -19,6 +19,7 @@ from scipy.spatial import distance
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.collections import LineCollection
+import seaborn as sns
 
 init_notebook_mode(connected=True)  
 
@@ -64,12 +65,12 @@ pd.set_option('display.float_format', lambda x: '%.3f' % x)
 SP500_pct_change.head()
 
 # Using graph_objects
+import plotly.express as px
+
 fig = px.line(SP500_pct_change, x=SP500_pct_change.index, y=SP500_pct_change.columns, title="Stock Daily Return")
 fig.update_xaxes(title_text="Date")
 fig.update_yaxes(title_text="Daily Return")
 fig.show()
-
-import plotly.express as px
 
 SP500_pct_change = SP500_pct_change.rename_axis(index='date', columns='company')
 fig = px.area(SP500_pct_change, facet_col='company', facet_col_wrap=2)
@@ -89,15 +90,12 @@ from scipy.spatial import distance
 # Init empty dataframe as a two dimension array
 SP500_distances = pd.DataFrame(index=names, columns = names, dtype=float)
 
-# Use two for loop to calculate the distance
+# Use 2 'for' loops to calculate the distance
 for sym1 in names:
     for sym2 in names:
-            SP500_distances[sym1][sym2] = distance.euclidean(SP500_pct_change[sym1].values,
-                                                             SP500_pct_change[sym2].values)
+            SP500_distances[sym1][sym2] = distance.euclidean(SP500_pct_change[sym1].values, SP500_pct_change[sym2].values)
 
 # Explore the result
-import seaborn as sns
-
 fig = plt.figure(figsize=(14, 10))
 sns.heatmap(SP500_distances, annot = True, fmt='.3f', vmin=0, vmax=0.5, cmap= 'coolwarm', xticklabels=True, yticklabels=True)
 fig.show()
