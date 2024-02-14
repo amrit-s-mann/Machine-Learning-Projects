@@ -3,7 +3,7 @@ It will expand on your understanding of how unsupervised machine learning algori
 1) AGGLOMERATIVE CLUSTERING 
 2) K-MEANS CLUSTERING
 3) DIVISIVE CLUSTERING
-are used for addressing investment problems involving clustering of stocks'''
+that are used for addressing investment problems involving clustering of stocks'''
 
 
 ''' Importing all relevant libraries ''' 
